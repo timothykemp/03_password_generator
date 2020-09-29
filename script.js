@@ -40,13 +40,22 @@ function generatePassword() {
   // New array with user's chosen character types included
   var charSet = lowerCase.concat(upperCase, numbers, special);
 
+  // User chooses character type options
+  var incLower = confirm("Press OK to include lower case characters");
+  var incUpper = confirm("Press OK to include upper case characters");
+  var incNum = confirm("Press OK to include numeric characters");
+  var incSpec = confirm("Press OK to include special characters");
 
-
+  // Console logs
   console.log(passLength);
   console.log(typeof passLength);
-  console.log(charSet);
-  console.log(charSet.length);
 
+  console.log(incLower);
+  console.log(incUpper);
+  console.log(incNum);
+  console.log(incSpec);
+
+  // Execute password length validation
   numValid()
 
 }
