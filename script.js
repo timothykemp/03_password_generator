@@ -19,22 +19,21 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
 
-  function numVal() {
-    // Prompt for user to enter desired password length 
-    var passLength = Number(prompt("Enter a desired password length between 8 and 128"));
 
-    // Password length and type validation
+  // Prompt for user to enter desired password length 
+  var passLength = Number(prompt("Enter a desired password length between 8 and 128"));
+
+
+  // Password length and type validation
+  function numVal() {
     if ((isNaN(passLength)) ||
       (passLength < 8) ||
       (passLength > 128) ||
       (!Number.isInteger(Number(passLength)))) {
       alert("You must enter a whole number between 8 and 128");
-      numVal();
-    } else { }
-    return passLength;
+    }
   }
 
-  numVal();
 
   // All possible password characters by type
   var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -57,11 +56,27 @@ function generatePassword() {
     charSet = charSet.concat(lowerCase);
   }
 
+
   // If user chooses to include uppercase characters, add to charSet
   if (incUpper) {
     charSet = charSet.concat(upperCase);
   }
 
+
+  // If user chooses to include numeric characters, add to charSet
+  if (incNum) {
+    charSet = charSet.concat(numbers);
+  }
+
+
+  // If user chooses to include special characters, add to charSet
+  if (incSpec) {
+    charSet = charSet.concat(special);
+  }
+
+  if (charSet.length === 0) {
+    alert("You must choose at least one character type");
+  }
 
   // Loop new charSet array by desired length to create password
   // password += charset[Math.random + charset.length]
@@ -74,6 +89,9 @@ function generatePassword() {
   console.log(incNum);
   console.log(incSpec);
   console.log(charSet);
+
+
+  numVal();
 
   // Update this to print out the generated password
   return 12345 //password
