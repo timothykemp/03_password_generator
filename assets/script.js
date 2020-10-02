@@ -29,6 +29,7 @@ function generatePassword() {
     // Prompt for user to enter desired password length 
     var passLengthEntered = Number(prompt("Enter a desired password length between 8 and 128"));
 
+    // Validate user's password length entry
     if ((isNaN(passLengthEntered)) ||
       (passLengthEntered < 8) ||
       (passLengthEntered > 128) ||
