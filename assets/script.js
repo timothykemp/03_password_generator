@@ -35,7 +35,7 @@ function generatePassword() {
     var passLengthEntered = prompt("Enter a desired password length between 8 and 128");
 
     // If user hits OK, validate entry, otherwise discontinue function
-    if (passLengthEntered) {
+    if ((typeof (passLengthEntered !== "object")) && passLengthEntered !== null) {
 
       // Validate user's password length entry and display alert if invalid
       if ((isNaN(passLengthEntered)) ||

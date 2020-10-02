@@ -31,8 +31,7 @@
     * Options found here: <https://owasp.org/www-community/password-special-characters>
 
 1. Once all prompts are answered:
-    *If user does not select OK on at least one option, then Alert user letting them know they have to choose at least one option
-    *Else generate password with user's selected criteria
-    *Display password in the designated space on the page
-
-1. Logic for password creation:
+    * If user does not select OK on at least one option, then Alert user letting them know they have to choose at least one option
+    * "You must select at least one character type"
+    * Else generate password with user's selected criteria
+    * Display password in the designated space on the page
