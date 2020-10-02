@@ -15,8 +15,16 @@ generateBtn.addEventListener("click", writePassword);
 // Password generator logic
 function generatePassword() {
 
-  // Global variables
+  // Initial global variables
   var passLength = numVal();
+  var userCancel = "Changed your mind? Click Generate Password to try again!";
+
+  // If user hits Cancel on prompt, stop script and display userCancel message
+  if (passLength === undefined) {
+    return userCancel;
+  };
+
+  // Remaining global variables if user does not cancel
   var charSet = criteriaChoices();
   var password = buildPass();
 
@@ -24,17 +32,23 @@ function generatePassword() {
   function numVal() {
 
     // Prompt for user to enter desired password length 
-    var passLengthEntered = Number(prompt("Enter a desired password length between 8 and 128"));
+    var passLengthEntered = prompt("Enter a desired password length between 8 and 128");
 
-    // Validate user's password length entry
-    if ((isNaN(passLengthEntered)) ||
-      (passLengthEntered < 8) ||
-      (passLengthEntered > 128) ||
-      (!Number.isInteger(Number(passLengthEntered)))) {
-      alert("You must enter a whole number between 8 and 128");
-      return numVal();
+    // If user hits OK, validate entry, otherwise discontinue function
+    if (passLengthEntered) {
+
+      // Validate user's password length entry
+      if ((isNaN(passLengthEntered)) ||
+        (passLengthEntered < 8) ||
+        (passLengthEntered > 128) ||
+        (!Number.isInteger(Number(passLengthEntered)))) {
+        alert("You must enter a whole number between 8 and 128");
+        return numVal();
+      } else {
+        return passLengthEntered;
+      }
     } else {
-      return passLengthEntered;
+      return
     }
   }
 
