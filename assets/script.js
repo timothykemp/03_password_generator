@@ -37,7 +37,7 @@ function generatePassword() {
     // If user hits OK, validate entry, otherwise discontinue function
     if (passLengthEntered) {
 
-      // Validate user's password length entry
+      // Validate user's password length entry and display alert if invalid
       if ((isNaN(passLengthEntered)) ||
         (passLengthEntered < 8) ||
         (passLengthEntered > 128) ||
@@ -87,6 +87,7 @@ function generatePassword() {
       charChoice = charChoice.concat(special);
     }
 
+    // If user doesn't choose any character types, display alert and restart function
     if (charChoice.length === 0) {
       alert("You must choose at least one character type");
       return criteriaChoices();
