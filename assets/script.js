@@ -12,16 +12,13 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
-
-
 // Password generator logic
 function generatePassword() {
 
   // Global variables
   var passLength = numVal();
   var charSet = criteriaChoices();
-  var password = "";
+  var password = buildPass();
 
   // Password length choice and choice validation
   function numVal() {
@@ -59,30 +56,22 @@ function generatePassword() {
     var incNum = confirm("Press OK to include numeric characters");
     var incSpec = confirm("Press OK to include special characters");
 
-    // If user chooses to include lowercase characters, add to charChoice
+    // If user chooses to add character types, include them in charChoice
     if (incLower) {
       charChoice = charChoice.concat(lowerCase);
     }
 
-    // If user chooses to include uppercase characters, add to charChoice
     if (incUpper) {
       charChoice = charChoice.concat(upperCase);
     }
 
-    // If user chooses to include numeric characters, add to charChoice
     if (incNum) {
       charChoice = charChoice.concat(numbers);
     }
 
-    // If user chooses to include special characters, add to charChoice
     if (incSpec) {
       charChoice = charChoice.concat(special);
     }
-
-    console.log(incLower);
-    console.log(incUpper);
-    console.log(incNum);
-    console.log(incSpec);
 
     if (charChoice.length === 0) {
       alert("You must choose at least one character type");
@@ -92,19 +81,24 @@ function generatePassword() {
     }
   }
 
+  // Create new password using passLength and charSet
+  function buildPass() {
 
+    // First var stores random character from loop and second holds concat of all loops 
+    var passChar = "";
+    var newPass = "";
 
-  // Loop new charSet array by desired length to create password
-  // password += charset[Math.random + charset.length]
-  // password = password + WHATEVERGOESHERE
+    // Loop new charSet array passLength times to choose random characters for password
+    for (var i = 0; i < passLength; i++) {
+      var passChar = charSet[Math.floor(Math.random() * charSet.length)];
+      newPass = newPass.concat(passChar);
+    }
 
-  // Console logs
-  console.log(passLength);
-  console.log(charSet);
+    return newPass;
+  }
 
-
-  // Update this to print out the generated password
-  return 12345 //password
+  // Pass new password so it can be displayed on website
+  return password;
 }
 
 
